@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Interactiva</title>
+</head>
+<body>
+    <h1>Calculadora</h1>
+    
+    <script>
+        // Paso 1: Declaración de variables
+        let num1, num2; // Variables para números
+        let operacion;  // Variable para la operación
+
+        // Paso 2: Función para realizar operaciones
+        function realizarOperacion(num1, num2, operacion) {
+            if (operacion === "suma" || operacion === "+") {
+                return num1 + num2;
+            } else if (operacion === "resta" || operacion === "-") {
+                return num1 - num2;
+            } else if (operacion === "multiplicacion" || operacion === "*") {
+                return num1 * num2;
+            } else if (operacion === "division" || operacion === "/") {
+                if (num2 === 0) {
+                    return "Error: No se puede dividir por cero.";
+                }
+                return num1 / num2;
+            } else {
+                return "Error: Operación no válida.";
+            }
+        }
+
+        // Paso 4: Bucle para realizar múltiples operaciones
+        while (true) {
+            // Solicitar datos al usuario
+            let input1 = prompt("Ingrese el primer número:");
+            num1 = parseFloat(input1);
+            if (isNaN(num1)) {
+                alert("Error: El primer número ingresado no es válido. Inténtelo nuevamente.");
+                continue; // Reinicia el bucle
+            }
+
+            let input2 = prompt("Ingrese el segundo número:");
+            num2 = parseFloat(input2);
+            if (isNaN(num2)) {
+                alert("Error: El segundo número ingresado no es válido. Inténtelo nuevamente.");
+                continue; // Reinicia el bucle
+            }
+
+            operacion = prompt("Ingrese la operación que desea realizar (suma, resta, multiplicacion, division) o use los símbolos (+, -, *, /), o escriba 'salir' para finalizar:");
+
+            if (operacion.toLowerCase() === "salir") {
+                alert("Gracias por usar la calculadora");
+                break; // Salir del bucle
+            }
+
+            // Paso 3: Validación de datos y operaciones
+            let resultado = realizarOperacion(num1, num2, operacion.toLowerCase());
+            alert(`El resultado de la operación "${operacion}" es: ${resultado}`);
+        }
+    </script>
+</body>
+</html>
